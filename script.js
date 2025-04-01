@@ -2,9 +2,13 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const restartButton = document.getElementById("restartButton");
 const scoreDisplay = document.getElementById("score");
+const highScoreDisplay = document.getElementById("highScore");
 
 const box = 20;
 let snake, direction, food, game, score;
+
+highScore = localStorage.getItem("highScore") ? parseInt(localStorage.getItem("highScore")) : 0;
+highScoreDisplay.textContent = highScore;
 
 function initGame() {
     snake = [{ x: 10 * box, y: 10 * box }];
@@ -61,6 +65,13 @@ function draw() {
         snake.some(segment => segment.x === newHead.x && segment.y === newHead.y)) {
         clearInterval(game);
         restartButton.style.display = "block";
+
+        if (score > highScore) {
+            highScore = score;
+            localStorage.setItem("highScore", highScore);
+            highScoreDisplay.textContent = highScore;
+        }
+
         return;
     }
     
