@@ -23,10 +23,10 @@ document.addEventListener("keydown", changeDirection);
 restartButton.addEventListener("click", initGame);
 
 function changeDirection(event) {
-    if (event.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
-    else if (event.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
-    else if (event.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
-    else if (event.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+    if ((event.key === "ArrowUp" || event.key === "w") && direction !== "DOWN") direction = "UP";
+    else if ((event.key === "ArrowDown"|| event.key === "s") && direction !== "UP") direction = "DOWN";
+    else if ((event.key === "ArrowLeft" || event.key === "a")&& direction !== "RIGHT") direction = "LEFT";
+    else if ((event.key === "ArrowRight" || event.key === "d")&& direction !== "LEFT") direction = "RIGHT";
 }
 
 function draw() {
