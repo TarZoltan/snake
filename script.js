@@ -1,9 +1,10 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const restartButton = document.getElementById("restartButton");
+const scoreDisplay = document.getElementById("score");
 
 const box = 20;
-let snake, direction, food, game;
+let snake, direction, food, game, score;
 
 function initGame() {
     snake = [{ x: 10 * box, y: 10 * box }];
@@ -12,6 +13,8 @@ function initGame() {
         x: Math.floor(Math.random() * 20) * box, 
         y: Math.floor(Math.random() * 20) * box 
     };
+    score = 0;
+    scoreDisplay.textContent = score;
     restartButton.style.display = "none";
     game = setInterval(draw, 100);
 }
@@ -47,6 +50,8 @@ function draw() {
             x: Math.floor(Math.random() * 20) * box, 
             y: Math.floor(Math.random() * 20) * box 
         };
+        score++;
+        scoreDisplay.textContent = score;
     } else {
         snake.pop();
     }
