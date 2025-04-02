@@ -8,6 +8,21 @@ const highScoreDisplay = document.getElementById("highScore");
 const box = 20;
 let snake, direction, food, game, score, isPaused = false;
 
+const themeToggle = document.getElementById("themeToggle");
+
+document.addEventListener("DOMContentLoaded", () => {
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "minimalist") {
+document.body.classList.add("minimalist");
+}
+});
+
+themeToggle.addEventListener("click", () => {
+document.body.classList.toggle("minimalist");
+localStorage.setItem("theme", document.body.classList.contains("minimalist") ? "minimalist" : "neon");
+});
+
+
 highScore = localStorage.getItem("highScore") ? parseInt(localStorage.getItem("highScore")) : 0;
 highScoreDisplay.textContent = highScore;
 
