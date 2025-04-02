@@ -53,14 +53,29 @@ function changeDirection(event) {
 }
 
 function draw() {
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    ctx.fillStyle = "red";
-    ctx.fillRect(food.x, food.y, box, box);
     
-    ctx.fillStyle = "green";
-    snake.forEach(segment => ctx.fillRect(segment.x, segment.y, box, box));
+    
+    // Kígyó rajzolása világító hatással
+    ctx.shadowColor = "rgba(255, 255, 255, 0.7)"; // Fehér áttetsző fény
+    ctx.shadowBlur = 10; // Elmosott szélek
+
+    ctx.fillStyle = "#ce363c";
+    ctx.beginPath();
+    ctx.arc(food.x + box / 2, food.y + box / 3, box / 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.closePath();
+
+    ctx.fillStyle = "#00ff00"; // Világosabb zöld a fényhatás érdekében
+    snake.forEach(segment => {
+        ctx.fillRect(segment.x, segment.y, box, box);
+    });
+
+    // Árnyék visszaállítása, hogy más elemek ne kapjanak fényhatást
+    ctx.shadowColor = "transparent";
+    ctx.shadowBlur = 0;
     
     let newHead = { x: snake[0].x, y: snake[0].y };
     if (direction === "UP") newHead.y -= box;
