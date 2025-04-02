@@ -12,6 +12,7 @@ highScore = localStorage.getItem("highScore") ? parseInt(localStorage.getItem("h
 highScoreDisplay.textContent = highScore;
 
 function initGame() {
+    clearInterval(game);
     snake = [{ x: 10 * box, y: 10 * box }];
     direction = "RIGHT";
     food = { 
@@ -21,6 +22,8 @@ function initGame() {
     score = 0;
     scoreDisplay.textContent = score;
     pauseButton.style.display = "inline";
+    isPaused = false;
+    pauseButton.textContent = "Szünet";
     game = setInterval(draw, 100);
 }
 
