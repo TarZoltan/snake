@@ -21,3 +21,10 @@ button {
 button:hover {
     background-color: #665;
 }
+.controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+}
