@@ -44,7 +44,7 @@ body.minimalist {
     text-shadow: none;
     text-align: center;
     font-family: Arial, sans-serif;
-    background-color: white;
+    background-color: rgb(227, 246, 255);
     color: black;
     }
     .minimalist canvas {
@@ -52,8 +52,9 @@ body.minimalist {
     background-color: white;
     }
     .minimalist .high-score {
-    background: white;
     color: black;
     text-shadow: none;
-    box-shadow: none;
+    }
+    .minimalist button:hover {
+        background-color: #777777;
     }

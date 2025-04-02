@@ -8,6 +8,7 @@ A simple browser-based Snake game using HTML, CSS, and JavaScript.
 - Start and pause buttons
 - Score and high score display
 - Neon-style visual effects
+- Multiple themes
 
 ## How to Play
 

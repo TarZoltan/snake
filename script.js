@@ -68,27 +68,25 @@ function changeDirection(event) {
 }
 
 function draw() {
+    const isNeonTheme = document.body.classList.contains("minimalist") === false;
+
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    
-    
-    // Kígyó rajzolása világító hatással
-    ctx.shadowColor = "rgba(255, 255, 255, 0.7)"; // Fehér áttetsző fény
-    ctx.shadowBlur = 10; // Elmosott szélek
 
-    ctx.fillStyle = "#ce363c";
+    ctx.shadowColor = "rgba(255, 255, 255, 0.7)";
+    ctx.shadowBlur = 10;
+
+    ctx.fillStyle = isNeonTheme ? "#ce363c" : "#ffffff"; 
     ctx.beginPath();
     ctx.arc(food.x + box / 2, food.y + box / 3, box / 3, 0, Math.PI * 2);
     ctx.fill();
     ctx.closePath();
 
-    ctx.fillStyle = "#00ff00"; // Világosabb zöld a fényhatás érdekében
+    ctx.fillStyle = isNeonTheme ? "#00ff00" : "#ffffff";
     snake.forEach(segment => {
         ctx.fillRect(segment.x, segment.y, box, box);
     });
 
-    // Árnyék visszaállítása, hogy más elemek ne kapjanak fényhatást
     ctx.shadowColor = "transparent";
     ctx.shadowBlur = 0;
     
