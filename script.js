@@ -2,7 +2,6 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 const startButton = document.getElementById("startButton");
 const pauseButton = document.getElementById("pauseButton");
-const restartButton = document.getElementById("restartButton");
 const scoreDisplay = document.getElementById("score");
 const highScoreDisplay = document.getElementById("highScore");
 
@@ -21,7 +20,6 @@ function initGame() {
     };
     score = 0;
     scoreDisplay.textContent = score;
-    restartButton.style.display = "none";
     pauseButton.style.display = "inline";
     game = setInterval(draw, 100);
 }
@@ -30,11 +28,7 @@ document.addEventListener("keydown", changeDirection);
 
 startButton.addEventListener("click", () => {
     initGame();
-});
-
-restartButton.addEventListener("click", () => {
-    startButton.style.display = "none";
-    initGame();
+    startButton.textContent = "Újrakezdés";
 });
 
 pauseButton.addEventListener("click", () => {
@@ -86,7 +80,6 @@ function draw() {
         newHead.y < 0 || newHead.y >= canvas.height ||
         snake.some(segment => segment.x === newHead.x && segment.y === newHead.y)) {
         clearInterval(game);
-        restartButton.style.display = "block";
         pauseButton.style.display = "block";
 
         if (score > highScore) {
